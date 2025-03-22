@@ -1,0 +1,24 @@
+version: "3.8"
+
+services:
+  postgres:
+    container_name: fastapi_pg
+    image: postgres:17
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: er07jN8gseIg
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "127.0.0.1:6433:5432"
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      DATABASE_DSN: "postgresql://app:b2jrpI8JqG5H71zmf8lT@postgres/task_tracker"
