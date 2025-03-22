@@ -9,32 +9,12 @@ docker-compose up -d
 ```sh
 alembic upgrade head
 ```
-Можно открыть свагер localhost:8000/docs \
+Можно открыть [swagger](localhost:8000/docs) \
 Для того, чтобы подключиться к postgresql можно воспользоваться кредами из docker-compose
 
+Кэширование реализовано для поиска, так как это самый затратный по времени запрос
+
 ---
-
-### Инструкция для установки psycopg2
-```sh 
-export LDFLAGS="-L$(brew --prefix openssl)/lib"
-export CPPFLAGS="-I$(brew --prefix openssl)/include"
-pip install psycopg2-binary
-```
-
-### Миграции
-
-```sh
-pip install alembic
-```
-Инициализация alembic
-```sh
-alembic init alembic
-```
-Генерация миграции
-```sh
-alembic revision --autogenerate -m "create tasks table"
-```
-
 
 **Написать на FastAPI веб-приложение для управления списком задач.** Пользователи должны иметь возможность создавать, просматривать, обновлять и удалять задачи. Каждая задача должна содержать заголовок, описание, статус (например, «в ожидании», «в работе», «завершено») и дату создания. 
 
@@ -59,3 +39,25 @@ alembic revision --autogenerate -m "create tasks table"
  
 
 Все необходимо хранить в базе данных (выбрать можете по вашему усмотрению) и использовать sqlalchemy или аналоги. Также необходимо реализовать автоматическую инициализацию таблиц либо через миграции, либо через вызов функции в lifespan.
+
+### Инструкция для установки psycopg2
+```sh 
+export LDFLAGS="-L$(brew --prefix openssl)/lib"
+export CPPFLAGS="-I$(brew --prefix openssl)/include"
+pip install psycopg2-binary
+```
+
+### Миграции
+
+```sh
+pip install alembic
+```
+Инициализация alembic
+```sh
+alembic init alembic
+```
+Генерация миграции
+```sh
+alembic revision --autogenerate -m "create tasks table"
+```
+
