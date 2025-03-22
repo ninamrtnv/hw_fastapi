@@ -9,7 +9,7 @@ docker-compose up -d
 ```sh
 alembic upgrade head
 ```
-Можно открыть [swagger](localhost:8000/docs) \
+Swagger: localhost:8000/docs \
 Для того, чтобы подключиться к postgresql можно воспользоваться кредами из docker-compose
 
 Кэширование реализовано для поиска, так как это самый затратный по времени запрос
